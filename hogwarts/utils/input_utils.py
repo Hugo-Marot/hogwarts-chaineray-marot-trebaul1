@@ -1,9 +1,10 @@
 def ask_text(message):
-    text = input(message).strip()  # Read user input and remove leading/trailing spaces
-    while text.isspace() or len(text) == 0:  # Check if the input is empty or only whitespace
+    text = input(message).strip()
+    while text.isspace() or len(text) == 0:
         print("Error: please enter a valid text.")
-        text = input(message).strip()  # Ask for input again and strip spaces
+        text = input(message).strip()
     return text
+
 
 def ask_number(message, min_val=None, max_val=None):
     # Internal function: checks if a string represents a valid integer
@@ -13,7 +14,7 @@ def ask_number(message, min_val=None, max_val=None):
 
         # If the number is negative
         if s[0] == "-":
-            if len(s) == 1:
+            if len(s) == 1:  # just "-" → not a number
                 return False
             s = s[1:]  # we check the remaining characters
 
@@ -55,3 +56,22 @@ def ask_number(message, min_val=None, max_val=None):
             continue
 
         return number
+
+
+def ask_choice(message, options):
+    # Display the message
+    print(message)
+
+    # Display the numbered list of options
+    for i, option in enumerate(options, start=1):
+        print(f"{i}. {option}")
+
+    # Ask the user for a valid choice number
+    choice_index = ask_number("Your choice: ", 1, len(options))
+
+    # Return the corresponding option (convert 1-based index to 0-based)
+    return options[choice_index - 1]
+
+#ask_text(message)
+#ask_number(message,min_val,max_val)
+#ask_choice(message,["yes", "no"])
