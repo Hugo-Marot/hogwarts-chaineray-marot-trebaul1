@@ -268,4 +268,5 @@ def start_chapter_1():
 
     # 7. Return the character dictionary
     return character
+
 start_chapter_1()
