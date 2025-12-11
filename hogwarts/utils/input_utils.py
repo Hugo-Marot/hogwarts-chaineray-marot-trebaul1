@@ -72,6 +72,22 @@ def ask_choice(message, options):
     # Return the corresponding option (convert 1-based index to 0-based)
     return options[choice_index - 1]
 
+import json
+
+def load_file(file_path):
+    #Load and return data from a JSON file
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            return data
+    except FileNotFoundError:
+        print(f"Erreur : Le fichier {file_path} est introuvable.")
+        return None
+    except json.JSONDecodeError:
+        print(f"Erreur : Le fichier {file_path} n'est pas un JSON valide.")
+        return None
+
+
 #ask_text(message)
 #ask_number(message,min_val,max_val)
 #ask_choice(message,["yes", "no"])
