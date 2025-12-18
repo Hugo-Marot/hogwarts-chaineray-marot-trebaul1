@@ -235,5 +235,3 @@ def start_chapter_1():
     print("\nEnd of Chapter 1! Your adventure begins at Hogwarts...\n")
 
     return character
-
-start_chapter_1()
