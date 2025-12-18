@@ -1,18 +1,12 @@
 from hogwarts.universe.character import *
+from hogwarts.universe.house import *
 from hogwarts.utils.input_utils import *
-import os
 
 def meet_friends(character):
-    """Handle the meetings with Ron, Hermione and Draco on the Hogwarts Express.
 
-    Each choice modifies the character's attributes (Courage, Intelligence, Loyalty, Ambition).
-    """
-
-    attrs = character["Attributes"]  # shortcut
+    attrs = character["Attributes"]
 
     print("You board the Hogwarts Express. The train slowly departs northward...")
-
-    # --- Meeting Ron ---
     print("\nA red-haired boy enters your compartment, looking friendly.")
     print("— Hi! I'm Ron Weasley. Mind if I sit with you?")
     print("How do you respond?")
@@ -32,7 +26,6 @@ def meet_friends(character):
         print("Ron looks a bit disappointed, but shrugs and leaves.")
         attrs["Ambition"] += 1
 
-    # --- Meeting Hermione ---
     print("\nA girl enters next, already carrying a stack of books.")
     print("— Hello, I'm Hermione Granger. Have you ever read 'A History of Magic'?")
     print("How do you respond?")
@@ -52,7 +45,6 @@ def meet_friends(character):
         print("Hermione raises an eyebrow: — Well, I suppose there are different kinds of courage...")
         attrs["Courage"] += 1
 
-    # --- Meeting Draco ---
     print("\nThen a blonde boy enters, looking arrogant.")
     print("— I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think?")
     print("How do you respond?")
@@ -81,7 +73,6 @@ def meet_friends(character):
     print(f"Your updated attributes: {attrs}")
 
 def welcome_message():
-    """Display a welcome message from Professor Dumbledore."""
 
     print("\n======================================================")
     print("Welcome to Hogwarts School of Witchcraft and Wizardry!")
@@ -94,8 +85,39 @@ def welcome_message():
 
     input("Press Enter to continue... ")
 
+def sorting_ceremony(character):
+    print("The sorting ceremony begins in the Great Hall...")
+    print("The Sorting Hat observes you for a long time before asking its questions:\n")
+
+    questions = [
+        (
+            "You see a friend in danger. What do you do?",
+            ["Rush to help", "Think of a plan", "Seek help", "Stay calm and observe"],
+            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        ),
+        (
+            "Which trait describes you best?",
+            ["Brave and loyal", "Cunning and ambitious",
+             "Patient and hardworking", "Intelligent and curious"],
+            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        ),
+        (
+            "When faced with a difficult challenge, you...",
+            ["Charge in without hesitation", "Look for the best strategy",
+             "Rely on your friends", "Analyze the problem"],
+            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+        )
+    ]
+
+    house = assign_house(character, questions)
+
+    character["House"] = house
+
+    print(f"\nThe Sorting Hat exclaims: {house}!!!")
+    print(f"You join the {house} students to loud cheers!")
+
+
 def enter_common_room(character):
-    """Place the player in their house common room and display its description."""
 
     house_name = character.get("House")
 
@@ -103,15 +125,12 @@ def enter_common_room(character):
         print("Error: The character has no assigned house.")
         return
 
-    # Load the house data
-    # Adapt path if needed!
     house_data = load_file("data/houses.json")
 
     if house_data is None:
         print("Error: Could not load houses.json")
         return
 
-    # Retrieve info for the player's house
     info = house_data.get(house_name)
 
     if info is None:
@@ -125,11 +144,24 @@ def enter_common_room(character):
 
     print("\nYou follow the prefects through the castle corridors...")
 
-    # Description
     print(f"{emoji} {description}")
 
-    # Welcome message
     print(f"✨ {welcome}")
 
-    # House colors
     print(f"Your house colors: {', '.join(colors)}\n")
+
+def start_chapter_2(character):
+    print("\n--- Chapter 2: A New Beginning at Hogwarts ---\n")
+
+    meet_friends(character)
+
+    welcome_message()
+
+    sorting_ceremony(character)
+
+    enter_common_room(character)
+
+    display_character(character)
+
+    print("\nChapter 2 ends here.")
+    print("Tomorrow, your first classes at Hogwarts will begin...")
