@@ -7,37 +7,37 @@ def init_character(last_name, first_name, attributes):
         "Spells": [],
         "Attributes": attributes
     }
-
     return character
 
-def display_character(character):
 
+def display_character(character):
     print("Character profile:")
 
-    for key, value in character.items():
+    for key in character:
+        value = character[key]
 
-        if isinstance(value, dict):
+        if type(value) == dict:
             print(f"{key}:")
-            for sub_key, sub_value in value.items():
-                print(f"- {sub_key}: {sub_value}")
+            for sub_key in value:
+                print(f"- {sub_key}: {value[sub_key]}")
 
-        elif isinstance(value, list):
+        elif type(value) == list:
             print(f"{key}:")
             if len(value) == 0:
-                continue
+                print("None")
             else:
-                print(", ".join(str(item) for item in value))
+                print(", ".join(value))
 
         else:
             print(f"{key}: {value}")
 
+
 def modify_money(character, amount):
-    character["Money"] += amount
+    character["Money"] = character["Money"] + amount
+
 
 def add_item(character, key, item):
-
-    if key not in ["Inventory", "Spells"]:
-        print(f"Erreur : '{key}' is not a valid field (must be 'Inventory' or 'Spells').")
-        return
-
-    character[key].append(item)
+    if key == "Inventory" or key == "Spells":
+        character[key].append(item)
+    else:
+        print("Error: invalid key")

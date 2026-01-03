@@ -1,10 +1,14 @@
+from utils.input_utils import ask_choice
+
+
 def update_house_points(houses, house_name, points):
     if house_name in houses:
-        houses[house_name] += points
+        houses[house_name] = houses[house_name] + points
         print(f"{house_name} gains {points} points.")
         print(f"New total for {house_name}: {houses[house_name]} points.")
     else:
         print("Warning: house not found.")
+
 
 def display_winning_house(houses):
     max_score = max(houses.values())
@@ -21,6 +25,7 @@ def display_winning_house(houses):
         for house in winners:
             print("-", house)
 
+
 def assign_house(character, questions):
     scores = {
         "Gryffindor": 0,
@@ -29,26 +34,32 @@ def assign_house(character, questions):
         "Ravenclaw": 0
     }
 
-    scores["Gryffindor"] += character.get("courage", 0) * 2
-    scores["Slytherin"] += character.get("ambition", 0) * 2
-    scores["Hufflepuff"] += character.get("loyalty", 0) * 2
-    scores["Ravenclaw"] += character.get("intelligence", 0) * 2
+    # 1) points de base à partir des attributs du joueur
+    attributes = character["Attributes"]
 
-    for question, choices, houses in questions:
-        print(question)
-        for i in range(len(choices)):
-            print(f"{i + 1}. {choices[i]}")
+    scores["Gryffindor"] = scores["Gryffindor"] + attributes["courage"] * 2
+    scores["Slytherin"] = scores["Slytherin"] + attributes["ambition"] * 2
+    scores["Hufflepuff"] = scores["Hufflepuff"] + attributes["loyalty"] * 2
+    scores["Ravenclaw"] = scores["Ravenclaw"] + attributes["intelligence"] * 2
 
-        choice = int(input("Your choice: ")) - 1
-        chosen_house = houses[choice]
+    # 2) questions du Choixpeau
+    for question, choices, houses_list in questions:
+        choice_text = ask_choice(question, choices)   # ex: "Rush to help"
 
-        scores[chosen_house] += 3
+        # retrouver l’index de la réponse choisie
+        index = choices.index(choice_text)
+
+        # ajouter 3 points à la maison liée à cette réponse
+        chosen_house = houses_list[index]
+        scores[chosen_house] = scores[chosen_house] + 3
+
         print()
 
+    # 3) afficher le résumé
     print("Summary of scores:")
     for house in scores:
         print(f"{house}: {scores[house]} points")
 
+    # 4) choisir la maison gagnante
     final_house = max(scores, key=scores.get)
-
     return final_house
