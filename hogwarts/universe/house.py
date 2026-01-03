@@ -1,4 +1,4 @@
-from utils.input_utils import ask_choice
+from hogwarts.utils.input_utils import ask_choice
 
 
 def update_house_points(houses, house_name, points):
@@ -34,7 +34,6 @@ def assign_house(character, questions):
         "Ravenclaw": 0
     }
 
-    # 1) points de base à partir des attributs du joueur
     attributes = character["Attributes"]
 
     scores["Gryffindor"] = scores["Gryffindor"] + attributes["courage"] * 2
@@ -42,24 +41,19 @@ def assign_house(character, questions):
     scores["Hufflepuff"] = scores["Hufflepuff"] + attributes["loyalty"] * 2
     scores["Ravenclaw"] = scores["Ravenclaw"] + attributes["intelligence"] * 2
 
-    # 2) questions du Choixpeau
     for question, choices, houses_list in questions:
-        choice_text = ask_choice(question, choices)   # ex: "Rush to help"
+        choice_text = ask_choice(question, choices)
 
-        # retrouver l’index de la réponse choisie
         index = choices.index(choice_text)
 
-        # ajouter 3 points à la maison liée à cette réponse
         chosen_house = houses_list[index]
         scores[chosen_house] = scores[chosen_house] + 3
 
         print()
 
-    # 3) afficher le résumé
     print("Summary of scores:")
     for house in scores:
         print(f"{house}: {scores[house]} points")
 
-    # 4) choisir la maison gagnante
     final_house = max(scores, key=scores.get)
     return final_house

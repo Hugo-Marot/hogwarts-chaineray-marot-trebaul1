@@ -15,7 +15,6 @@ def ask_number(message, min_val=None, max_val=None):
     while True:
         user_input = input(message).strip()
 
-        # vérifier si c'est un nombre entier (positif ou négatif)
         if user_input.startswith("-"):
             is_number = user_input[1:].isdigit()
         else:

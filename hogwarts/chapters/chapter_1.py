@@ -82,13 +82,11 @@ def buy_supplies(character, file_path="data/inventory.json"):
     print("Welcome to Diagon Alley!")
     print("Catalog of available items:")
 
-    # afficher le catalogue
     for key in catalog:
         name, price = catalog[key]
         required = " (required)" if name in required_items else ""
         print(f"{key}. {name} - {price} Galleons{required}")
 
-    # acheter les items obligatoires
     while len(bought_required) < 3:
         print(f"\nYou have {character['Money']} Galleons.")
         remaining = [item for item in required_items if item not in bought_required]
@@ -115,7 +113,6 @@ def buy_supplies(character, file_path="data/inventory.json"):
 
     print("\nAll required items have been purchased!")
 
-    # choisir un animal
     pets = ["Owl", "Cat", "Rat", "Toad"]
     pet_prices = {"Owl": 20, "Cat": 15, "Rat": 10, "Toad": 5}
 

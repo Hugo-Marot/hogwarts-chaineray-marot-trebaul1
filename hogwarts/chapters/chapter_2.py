@@ -8,7 +8,6 @@ def meet_friends(character):
 
     print("You board the Hogwarts Express. The train slowly departs northward...")
 
-    # Ron
     choice = ask_choice(
         "\nA red-haired boy enters your compartment.\n— Hi! I'm Ron Weasley. Mind if I sit with you?\nHow do you respond?",
         ["Sure, have a seat!", "Sorry, I prefer to travel alone."]
@@ -21,7 +20,6 @@ def meet_friends(character):
         print("Ron looks a bit disappointed, but shrugs and leaves.")
         attrs["ambition"] = attrs["ambition"] + 1
 
-    # Hermione
     choice = ask_choice(
         "\nA girl enters next, carrying a stack of books.\n— Hello, I'm Hermione Granger. Have you ever read 'A History of Magic'?\nHow do you respond?",
         ["Yes, I love learning new things!", "Uh… no, I prefer adventures over books."]
@@ -34,7 +32,6 @@ def meet_friends(character):
         print("Hermione raises an eyebrow: — Well, I suppose there are different kinds of courage...")
         attrs["courage"] = attrs["courage"] + 1
 
-    # Draco
     choice = ask_choice(
         "\nThen a blonde boy enters, looking arrogant.\n— I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think?\nHow do you respond?",
         ["Shake his hand politely.", "Ignore him completely.", "Respond with arrogance."]
