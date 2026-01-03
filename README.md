@@ -72,3 +72,4 @@ Testing Strategies
 Each chapter was tested independently to simplify debugging. Tests were performed using both valid and invalid inputs, such as empty inputs, incorrect data types, and invalid choices. These tests confirmed that the program does not crash and correctly asks the user to try again when an error occurs.
 
 The Quidditch match was tested multiple times to verify random events such as goals and the appearance of the Golden Snitch. Manual tests were also performed to ensure that house points are correctly updated and displayed.
+![img.png](img.png)
