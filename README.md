@@ -1,15 +1,47 @@
-Hogwarts Adventure is a text-based adventure game developed in Python and inspired by the Harry Potter universe. This project was created as part of the TI101 – Programming in Python course. The player follows a magical journey through several chapters set at Hogwarts School of Witchcraft and Wizardry.
+Project Title
+Hogwarts Adventure
 
-During the game, the player creates a character, chooses personal attributes such as courage, intelligence, loyalty and ambition, and is then sorted into a Hogwarts house through a sorting ceremony. As the adventure progresses, the player learns spells, answers a magic quiz, and participates in a Quidditch match. Each decision made by the player influences the evolution of the character and the number of points earned by their house.
+Brief Description
+Hogwarts Adventure is a text-based adventure game developed in Python. The project is inspired by the Harry Potter universe and was created as part of the TI101 – Programming in Python course. The game is divided into several chapters and takes place at Hogwarts School of Witchcraft and Wizardry. The player creates a character, assigns attributes, is sorted into a house, learns spells, answers a magic quiz, and participates in a Quidditch match. The player’s choices influence both the character’s attributes and the number of points earned by their house.
 
-The main objective of the game is to make the best possible choices throughout the adventure in order to help the player’s house gain points and compete for the House Cup. The game progresses automatically from one chapter to another and combines narrative elements with interactive choices.
+Contributors
 
-The project was developed using Python 3.x and does not require any external libraries. Only built-in Python modules such as random and json are used. To run the project, all files must be correctly placed in the project folder structure. The game is launched by running the main.py file from the project root directory using the command “python main.py”. All interactions take place in the terminal. When prompted, the player presses Enter to continue and enters the number corresponding to their choice. Invalid inputs are rejected and the program asks the player to try again.
+Yanis, Hugo
 
-The main features of the project include interactive character creation, attribute management, a Hogwarts house sorting system, a spell learning system, a magic quiz with random questions, a Quidditch match simulation, a house point management system, and a narrative progression divided into multiple chapters.
+Installation
 
-The project was developed over several weeks. The first week focused on project setup and the creation of utility input functions. The second week was dedicated to the development of Chapters 1 and 2. The third week focused on Chapter 3 and testing of previously developed features. The fourth week was dedicated to Chapter 4 and bug fixing. The final phase focused on testing, validation, and overall cleanup of the code.
+Instructions for cloning the Git repository
 
-The work was shared between the two contributors and reviewed together. Yanis worked on the input utility functions, the house management system, Chapter 4 (Quidditch), and the README file. Hugo worked on character management, Chapters 1, 2 and 3, as well as the main program and the menu system.
+The project can be retrieved by cloning the Git repository using the following command:
 
-Several issues were encountered during development, mainly related to invalid user inputs, inconsistent dictionary key naming (uppercase and lowercase mismatches), and misuse of data structures such as lists and dictionaries. These problems were resolved by adding input validation loops, enforcing consistent naming conventions, and using explicit loops and conditions instead of forbidden predefined functions. Each chapter was tested independently using both valid and invalid inputs to ensure that the program does not crash and behaves as expected.
+Development environment configuration
+
+Python 3.x is required to run the project. No external libraries are needed. Only built-in Python modules are used. The project must be kept in its original folder structure for the program to work correctly.
+
+Usage
+
+How to run the application
+To launch the game, open a terminal in the project root directory and run:
+
+main.py
+
+
+How to use the program
+
+The game runs entirely in the terminal. The player follows the instructions displayed on the screen, presses Enter to continue when asked, and enters the number corresponding to their choice. If an invalid input is entered, the program asks the user to enter a correct value.
+
+Key Features
+
+Character creation with attributes (courage, intelligence, loyalty, ambition)
+
+Sorting into a Hogwarts house
+
+Spell learning system
+
+Magic quiz with random questions
+
+Quidditch match simulation
+
+House points management
+
+Game progression divided into multiple chapters
